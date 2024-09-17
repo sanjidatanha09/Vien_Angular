@@ -1,92 +1,169 @@
-import  { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Navbar from '../Components/Navbar';
+import { PiBagSimpleThin } from 'react-icons/pi';
+import { CgSmartHomeCooker } from 'react-icons/cg';
+import { RiPagesLine } from 'react-icons/ri';
+import { HiUserGroup } from 'react-icons/hi';
+import { Outlet, useNavigate } from 'react-router-dom';
 
 const Layout = () => {
-    // State to control the visibility of the two sidebars and the main content
-    const [sidebarStep, setSidebarStep] = useState(0);
-    const [firstSidebarContent, setFirstSidebarContent] = useState('');
-    const [secondSidebarContent, setSecondSidebarContent] = useState('');
+    const navigate = useNavigate(); // Move useNavigate here
 
-    // Function to handle the toggling of sidebars
+    // State to control sidebar visibility
+    const [clickCount, setClickCount] = useState(0);
+    const [sidebar1Visible, setSidebar1Visible] = useState(true);
+    const [sidebar2Visible, setSidebar2Visible] = useState(true);
+
+    // State to manage content for both sidebars
+    const [firstSidebarContent, setFirstSidebarContent] = useState('Content 1');
+    const [secondSidebarContent, setSecondSidebarContent] = useState([]);
+
+    useEffect(() => {
+        if (firstSidebarContent === 'Content 1') {
+            setSecondSidebarContent([
+                { id: 1, name: 'Menu ', icon: PiBagSimpleThin },
+                { id: 2, name: 'rita', icon: PiBagSimpleThin }
+            ]);
+        } else if (firstSidebarContent === 'Content 2') {
+            setSecondSidebarContent([
+                { id: 1, name: 'Default', icon: PiBagSimpleThin },
+                { id: 2, name: 'Default', icon: PiBagSimpleThin },
+                { id: 3, name: 'Default', icon: PiBagSimpleThin },
+                { id: 4, name: 'Default', icon: PiBagSimpleThin }
+            ]);
+        } else if (firstSidebarContent === 'Content 3') {
+            setSecondSidebarContent([
+                { id: 1, name: 'User 1', icon: PiBagSimpleThin },
+                { id: 2, name: 'User 2', icon: PiBagSimpleThin },
+                { id: 3, name: 'User 3', icon: PiBagSimpleThin },
+                { id: 4, name: 'User 4', icon: PiBagSimpleThin }
+            ]);
+        } else {
+            setSecondSidebarContent([]);
+        }
+    }, [firstSidebarContent]);
+
     const toggleSidebar = () => {
-        setSidebarStep((prevStep) => (prevStep + 1) % 4); // Loop through 4 states
+        const newClickCount = clickCount + 1;
+        setClickCount(newClickCount);
+
+        switch (newClickCount) {
+            case 1:
+                setSidebar2Visible(false);
+                break;
+            case 2:
+                setSidebar1Visible(false);
+                break;
+            case 3:
+                setSidebar1Visible(true);
+                break;
+            case 4:
+                setSidebar2Visible(true);
+                setClickCount(0);
+                break;
+            default:
+                break;
+        }
     };
 
     // Function to handle click on first sidebar content
     const handleFirstSidebarClick = (content) => {
         setFirstSidebarContent(content);
-        setSidebarStep(2); // Open the second sidebar
+        setSidebar2Visible(true);
     };
 
     // Function to handle click on second sidebar content
-    const handleSecondSidebarClick = (content) => {
-        setSecondSidebarContent(content);
+    const handleSecondSidebarClick = (item) => {
+        switch (item.name) {
+            case 'Menu ':
+                navigate('/menu');
+                break;
+            case 'rita':
+                navigate('/rita');
+                break;
+            case 'User 1':
+                navigate('/user1');
+                break;
+            case 'User 2':
+                navigate('/user2');
+                break;
+            case 'User 3':
+                navigate('/user3');
+                break;
+            case 'User 4':
+                navigate('/user4');
+                break;
+            default:
+                navigate('/');
+        }
     };
 
     return (
-        <div className="">
+        <div className="flex flex-col h-screen">
             {/* Top Navbar */}
-            <div className="">
-                {/* <div className="text-xl">Navbar</div> */}
-                <Navbar toggleSidebar={toggleSidebar}></Navbar>
-                
-            </div>
+            <Navbar toggleSidebar={toggleSidebar} />
 
-            <div className='flex h-screen'>
+            <div className="flex h-full">
                 {/* Sidebar 1 */}
-            
                 <div
-                    className={`bg-gray-200 w-64 p-4 transition-transform duration-300 ${sidebarStep === 0 || sidebarStep >= 3 ? '-translate-x-full' : 'translate-x-0'}`}
+                    className={`bg-white shadow-xl border-r z-30 w-[140px] transition-transform duration-300 ${sidebar1Visible ? 'translate-x-0' : '-translate-x-full'
+                        }`}
                 >
-
-                    <h2 className="text-lg font-semibold mb-4">First Sidebar</h2>
                     <ul>
                         <li
-                            className="cursor-pointer hover:bg-gray-300 p-2"
+                            className="h-[110px] flex flex-col justify-center items-center"
                             onClick={() => handleFirstSidebarClick('Content 1')}
                         >
-                            Content 1
+                            <CgSmartHomeCooker className="w-[25px] font-thin h-[25px] mx-auto" />
+                            <p className='font-normal'>Dashboards</p>
                         </li>
+                        <hr />
                         <li
-                            className="cursor-pointer hover:bg-gray-300 p-2"
+                            className="h-[110px] flex flex-col justify-center items-center"
                             onClick={() => handleFirstSidebarClick('Content 2')}
                         >
-                            Content 2
+                            <RiPagesLine className="w-[25px] font-thin h-[25px] mx-auto" />
+                            <p className='font-normal'>Pages</p>
                         </li>
+                        <hr />
+                        <li
+                            className="h-[110px] flex flex-col justify-center items-center"
+                            onClick={() => handleFirstSidebarClick('Content 3')}
+                        >
+                            <HiUserGroup className="w-[25px] font-thin h-[25px] mx-auto" />
+                            <p className='font-normal'>User</p>
+                        </li>
+                        <hr />
                     </ul>
                 </div>
 
                 {/* Sidebar 2 */}
                 <div
-                    className={`bg-gray-300 w-64 p-4 transition-transform duration-300 ${sidebarStep === 2 ? 'translate-x-0' : 'translate-x-full'}`}
+                    className={`bg-white w-[220px] z-20 shadow-2xl rounded-r-md p-4 transition-transform duration-500 ${sidebar2Visible ? 'translate-x-0' : '-translate-x-[600px]'
+                        }`}
                 >
-                    <h2 className="text-lg font-semibold mb-4">Second Sidebar</h2>
                     <ul>
-                        {firstSidebarContent ? (
+                        {secondSidebarContent.map((item) => (
                             <li
-                                className="cursor-pointer hover:bg-gray-400 p-2"
-                                onClick={() => handleSecondSidebarClick(firstSidebarContent)}
+                                key={item.id}
+                                className="cursor-pointer hover:bg-gray-400 p-2 flex items-center gap-1"
+                                onClick={() => handleSecondSidebarClick(item)}
                             >
-                                Open {firstSidebarContent} in Main Outlet
+                                <item.icon className="text-text_large" />
+                                <p className="font-normal">{item.name}</p>
                             </li>
-                        ) : (
-                            <li>No Content Selected</li>
-                        )}
+                        ))}
                     </ul>
                 </div>
 
                 {/* Main Content Area */}
                 <div className="flex-grow bg-white p-4">
                     <h1 className="text-2xl font-bold">Main Content Area</h1>
-                    {secondSidebarContent && (
-                        <div className="mt-4 p-4 bg-gray-100 rounded-lg shadow-md">
-                            <p className="text-lg">Showing: {secondSidebarContent}</p>
-                        </div>
-                    )}
+                    <Outlet />
                 </div>
-            </div>
 
-          
+                
+            </div>
         </div>
     );
 };
