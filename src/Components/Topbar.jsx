@@ -1,27 +1,18 @@
+import { useContext } from "react";
+import { BasicContext } from "../ContextApis/BasicProvider";
+import { RiMenuFold3Line, RiMenuFold4Line } from "react-icons/ri";
 
 
 function Topbar() {
+    const { sidebarOpen, setSideBarOpen } = useContext(BasicContext);
     return (
-        <div className="flex justify-between items-center p-4 bg-white shadow-md">
-            <div className="flex items-center space-x-4">
-                <button className="text-xl focus:outline-none">
-                    <i className="fas fa-bars"></i>
-                </button>
-                <input
-                    type="text"
-                    placeholder="Search..."
-                    className="border px-4 py-2 rounded focus:outline-none"
-                />
+
+        <div className="bg-primary py-p_xs px-p_sm flex items-center gap-g_lg">
+            <div className="hidden lg:flex gap-g_sm">
+                {!sidebarOpen ? <RiMenuFold3Line onClick={() => setSideBarOpen(!sidebarOpen)} className="text-text_xl hover:cursor-pointer hover:text-secondary duration-200" /> :
+                    <RiMenuFold4Line onClick={() => setSideBarOpen(!sidebarOpen)} className="text-text_xl hover:cursor-pointer hover:text-secondary duration-200" />}
             </div>
-            <div className="flex items-center space-x-4">
-                <button className="bg-blue-600 text-white px-4 py-2 rounded">Buy</button>
-                <span className="font-bold">EN</span>
-                <img
-                    src="https://via.placeholder.com/40"
-                    alt="User"
-                    className="w-10 h-10 rounded-full"
-                />
-            </div>
+            <div>Link</div>
         </div>
     );
 }
