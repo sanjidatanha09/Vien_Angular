@@ -26,17 +26,17 @@ const Layout = () => {
             ]);
         } else if (firstSidebarContent === 'Content 2') {
             setSecondSidebarContent([
-                { id: 1, name: 'Default', icon: PiBagSimpleThin },
-                { id: 2, name: 'Default', icon: PiBagSimpleThin },
                 { id: 3, name: 'Default', icon: PiBagSimpleThin },
-                { id: 4, name: 'Default', icon: PiBagSimpleThin }
+                { id: 4, name: 'Default', icon: PiBagSimpleThin },
+                { id: 5, name: 'Default', icon: PiBagSimpleThin },
+                { id: 6, name: 'Default', icon: PiBagSimpleThin }
             ]);
         } else if (firstSidebarContent === 'Content 3') {
             setSecondSidebarContent([
-                { id: 1, name: 'User 1', icon: PiBagSimpleThin },
-                { id: 2, name: 'User 2', icon: PiBagSimpleThin },
-                { id: 3, name: 'User 3', icon: PiBagSimpleThin },
-                { id: 4, name: 'User 4', icon: PiBagSimpleThin }
+                { id: 7, name: 'User 1', icon: PiBagSimpleThin },
+                { id: 8, name: 'User 2', icon: PiBagSimpleThin },
+                { id: 9, name: 'User 3', icon: PiBagSimpleThin },
+                { id: 10, name: 'User 4', icon: PiBagSimpleThin }
             ]);
         } else {
             setSecondSidebarContent([]);
