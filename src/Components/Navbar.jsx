@@ -7,16 +7,13 @@ import { LuTriangle } from 'react-icons/lu';
 import { MdArrowDropDown, MdOutlineDashboard } from 'react-icons/md';
 
 const Navbar = ({toggleSidebar}) => {
-
     const [isDropdownVisible, setIsDropdownVisible] = useState(false);
-    const dropdownRef = useRef(null); // Create a reference to the dropdown
+    const dropdownRef = useRef(null); 
 
-    // Toggle dropdown visibility
     const toggleDropdown = () => {
         setIsDropdownVisible(!isDropdownVisible);
     };
 
-    // Close dropdown if clicked outside
     const handleClickOutside = (event) => {
         if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
             setIsDropdownVisible(false);
@@ -24,22 +21,19 @@ const Navbar = ({toggleSidebar}) => {
     };
 
     useEffect(() => {
-        // Add event listener to detect clicks outside
         document.addEventListener('mousedown', handleClickOutside);
-
-        return () => {
-            // Clean up the event listener on component unmount
+        return () => {  
             document.removeEventListener('mousedown', handleClickOutside);
         };
     }, []);
 
     const handleLanguageSelect = (language) => {
         console.log(`Selected language: ${language}`);
-        setIsDropdownVisible(false); // Close the dropdown after selection
+        setIsDropdownVisible(false); 
     };
     return (
-        <div className="w-full py-6 z-40 bg-white shadow-md flex items-center justify-between px-4 border">
-            {/* Left Side: Menu Icon and Search Bar */}
+        <div style={{ boxShadow: '0 2px 6px rgba(0, 0, 0, 0.1)' }} className="w-full py-6 z-40 bg-white flex items-center justify-between px-4 h-[100px] ">
+           
             <div className="flex items-center space-x-4">
                 {/* Menu Icon */}
                 <button
@@ -100,13 +94,11 @@ const Navbar = ({toggleSidebar}) => {
                 </button>
             </div>
 
-            {/* Center: Logo */}
             <div className="flex items-center gap-1 ">
                 <LuTriangle className='text-text_large  w-full' />
                 <span className="font-bold text-text_large">VIEN</span>
             </div>
-
-            {/* Right Side: Icons and Profile */}
+           
             <div className="flex items-center space-x-4">
                 {/* Toggle */}
                 <button className="bg-gray-200  rounded-lg py-1 px-2 focus:outline-none">

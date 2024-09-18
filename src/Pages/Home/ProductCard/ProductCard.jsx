@@ -3,7 +3,7 @@ import img1 from '../../../assets/foodImg/pinterest (25).jpg'
 import img2 from '../../../assets/foodImg/pinterest (26).jpg'
 import img3 from '../../../assets/foodImg/pinterest (27).jpg'
 import img4 from '../../../assets/foodImg/pinterest (28).jpg'
-import PiechartProduct from '../Charts/PiechartProduct';
+import PiechartProduct from '../PiechartProduct/PiechartProduct';
 
 const ProductCard = () => {
     return (

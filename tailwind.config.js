@@ -10,6 +10,7 @@ export default {
       colors: {
         primary: '#F3F4F6',
         secondary: '#0771BA',
+        body_color: '#F8F8F8'
         
 
 

@@ -6,10 +6,7 @@ import SalesCard from "./SalesCard/SalesCard";
 
 const Home = () => {
     return (
-        <div className="z-10 mt-32">
-            <div>
-               <h1>Hello</h1>
-            </div>
+        <div className="z-10 ">
             <div>
                 <h1>Default</h1>
                 <p>Home | Dashboards | Default</p>

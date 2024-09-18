@@ -4,6 +4,7 @@ import img1 from '../../../assets/foodImg/pinterest (25).jpg'
 import img2 from '../../../assets/foodImg/pinterest (26).jpg'
 import img3 from '../../../assets/foodImg/pinterest (27).jpg'
 import img4 from '../../../assets/foodImg/pinterest (28).jpg'
+import SimpleLineChart from '../SimpleLineChart/SimpleLineChart';
 
 const SalesCard = () => {
     return (

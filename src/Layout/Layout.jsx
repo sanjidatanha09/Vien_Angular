@@ -7,7 +7,7 @@ import { HiUserGroup } from 'react-icons/hi';
 import { Outlet, useNavigate } from 'react-router-dom';
 
 const Layout = () => {
-    const navigate = useNavigate(); // Move useNavigate here
+    const navigate = useNavigate();
 
     // State to control sidebar visibility
     const [clickCount, setClickCount] = useState(0);
@@ -99,73 +99,77 @@ const Layout = () => {
     };
 
     return (
-        <div className="flex flex-col h-screen">
+        <div className="flex flex-col bg-body_color">
             {/* Top Navbar */}
             <Navbar toggleSidebar={toggleSidebar} />
 
-            <div className="flex h-full">
-                {/* Sidebar 1 */}
-                <div
-                    className={`bg-white shadow-xl border-r z-30 w-[140px] transition-transform duration-300 ${sidebar1Visible ? 'translate-x-0' : '-translate-x-full'
-                        }`}
-                >
-                    <ul>
-                        <li
-                            className="h-[110px] flex flex-col justify-center items-center"
-                            onClick={() => handleFirstSidebarClick('Content 1')}
-                        >
-                            <CgSmartHomeCooker className="w-[25px] font-thin h-[25px] mx-auto" />
-                            <p className='font-normal'>Dashboards</p>
-                        </li>
-                        <hr />
-                        <li
-                            className="h-[110px] flex flex-col justify-center items-center"
-                            onClick={() => handleFirstSidebarClick('Content 2')}
-                        >
-                            <RiPagesLine className="w-[25px] font-thin h-[25px] mx-auto" />
-                            <p className='font-normal'>Pages</p>
-                        </li>
-                        <hr />
-                        <li
-                            className="h-[110px] flex flex-col justify-center items-center"
-                            onClick={() => handleFirstSidebarClick('Content 3')}
-                        >
-                            <HiUserGroup className="w-[25px] font-thin h-[25px] mx-auto" />
-                            <p className='font-normal'>User</p>
-                        </li>
-                        <hr />
-                    </ul>
-                </div>
-
-                {/* Sidebar 2 */}
-                <div
-                    className={`bg-white w-[220px] z-20 shadow-2xl rounded-r-md p-4 transition-transform duration-500 ${sidebar2Visible ? 'translate-x-0' : '-translate-x-[600px]'
-                        }`}
-                >
-                    <ul>
-                        {secondSidebarContent.map((item) => (
+            <div className="flex">
+                <div className="flex min-h-screen">
+                    {/* Sidebar 1 */}
+                    <div
+                        className={`bg-white   transition-all z-20 duration-300 ${sidebar1Visible ? 'w-[140px] border-r  ' : 'w-0 overflow-hidden '
+                            }`}
+                    >
+                        <ul className='bg-white '>
                             <li
-                                key={item.id}
-                                className="cursor-pointer hover:bg-gray-400 p-2 flex items-center gap-1"
-                                onClick={() => handleSecondSidebarClick(item)}
+                                className="h-[110px]  flex flex-col justify-center items-center"
+                                onClick={() => handleFirstSidebarClick('Content 1')}
                             >
-                                <item.icon className="text-text_large" />
-                                <p className="font-normal">{item.name}</p>
+                                <CgSmartHomeCooker className="w-[32px] font-thin h-[32px] mx-auto" />
+                                <p className='font-normal text-text_standard'>Dashboards</p>
                             </li>
-                        ))}
-                    </ul>
+                            <hr />
+                            <li
+                                className="h-[110px] flex flex-col justify-center items-center"
+                                onClick={() => handleFirstSidebarClick('Content 2')}
+                            >
+                                <RiPagesLine className="w-[32px] font-thin h-[32px] mx-auto" />
+                                <p className='font-normal text-text_standard'>Pages</p>
+                            </li>
+                            <hr />
+                            <li
+                                className="h-[110px] flex flex-col justify-center items-center"
+                                onClick={() => handleFirstSidebarClick('Content 3')}
+                            >
+                                <HiUserGroup className="w-[32px] font-thin h-[32px] mx-auto" />
+                                <p className='font-normal text-text_standard'>User</p>
+                            </li>
+                            <hr />
+                        </ul>
+                    </div>
+
+                    {/* Sidebar 2 */}
+                    <div
+                        className={`bg-white   transition-all duration-500 ${sidebar2Visible ? 'w-[230px] p-4 border-r shadow-2xl  rounded-r-2xl' : 'w-0 p-0 border-none overflow-hidden'
+                            }`}
+                    >
+                        <ul>
+                            {secondSidebarContent.map((item) => (
+                                <li
+                                    key={item.id}
+                                    className="cursor-pointer hover:bg-gray-400 p-2 flex items-center gap-1"
+                                    onClick={() => handleSecondSidebarClick(item)}
+                                >
+                                    <item.icon className="text-text_large" />
+                                    <p className="font-normal">{item.name}</p>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
                 </div>
 
                 {/* Main Content Area */}
-                <div className="flex-grow bg-white p-4">
-                    <h1 className="text-2xl font-bold">Main Content Area</h1>
+                <div
+                    className={`flex-grow  pt-4 pl-10 transition-all duration-500 ${!sidebar1Visible && !sidebar2Visible ? 'w-full' : 'w-[calc(100%-140px-230px)]'
+                        }`}
+                >
                     <Outlet />
                 </div>
-
-                
             </div>
         </div>
     );
 };
 
 export default Layout;
+
+
