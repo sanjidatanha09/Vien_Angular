@@ -6,9 +6,10 @@ import { IoIosExpand, IoMdNotifications } from 'react-icons/io';
 import { LuTriangle } from 'react-icons/lu';
 import { MdArrowDropDown, MdOutlineDashboard } from 'react-icons/md';
 
-const Navbar = ({toggleSidebar}) => {
+const Navbar2 = ({ toggleSidebar2 }) => {
+    console.log(toggleSidebar2)
     const [isDropdownVisible, setIsDropdownVisible] = useState(false);
-    const dropdownRef = useRef(null); 
+    const dropdownRef = useRef(null);
 
     const toggleDropdown = () => {
         setIsDropdownVisible(!isDropdownVisible);
@@ -22,23 +23,23 @@ const Navbar = ({toggleSidebar}) => {
 
     useEffect(() => {
         document.addEventListener('mousedown', handleClickOutside);
-        return () => {  
+        return () => {
             document.removeEventListener('mousedown', handleClickOutside);
         };
     }, []);
 
     const handleLanguageSelect = (language) => {
         console.log(`Selected language: ${language}`);
-        setIsDropdownVisible(false); 
+        setIsDropdownVisible(false);
     };
     return (
-        <div style={{ boxShadow: '0 2px 6px rgba(0, 0, 0, 0.1)' }} className="fixed  w-full py-p_24px z-40 bg-white flex items-center justify-between px-p_16px h-[100px] border">
-           
+        <div style={{ boxShadow: '0 2px 6px rgba(0, 0, 0, 0.1)' }} className="fixed w-full py-p_12px z-40 bg-white flex items-center justify-between px-p_16px h-[80px] border">
+
             <div className="flex items-center space-x-4">
                 {/* Menu Icon */}
                 <button
                     className=""
-                    onClick={toggleSidebar}
+                    onClick={toggleSidebar2}
                 >
                     <AiOutlineMenuFold className='text-text_30px' />
 
@@ -50,10 +51,10 @@ const Navbar = ({toggleSidebar}) => {
                     <input
                         type="text"
                         placeholder="Search"
-                        className="pl-p_8px lg:pr-p_24px py-p_8px rounded-full border border-gray-300 focus:outline-none focus:border-gray-500 w-[100px]"
+                        className="pl-p_8px lg:pr-6 py-p_8px rounded-full border border-gray-300 focus:outline-none focus:border-gray-500 w-[100px]"
                     />
                     <button className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-500">
-                        
+
                     </button>
                 </div>
 
@@ -83,7 +84,7 @@ const Navbar = ({toggleSidebar}) => {
                             >
                                 FR
                             </li>
-                            
+
                         </ul>
                     )}
                 </div>
@@ -98,7 +99,7 @@ const Navbar = ({toggleSidebar}) => {
                 <LuTriangle className='text-text_large  w-full' />
                 <span className="font-bold text-text_large">VIEN</span>
             </div>
-           
+
             <div className="flex items-center space-x-4">
                 {/* Toggle */}
                 <button className="bg-gray-200 hidden md:flex rounded-lg py-p_4px px-p_8px focus:outline-none">
@@ -122,10 +123,10 @@ const Navbar = ({toggleSidebar}) => {
                     <FaRegUserCircle className='text-text_40px' />
                 </div>
 
-               
+
             </div>
         </div>
     );
 };
 
-export default Navbar;
+export default Navbar2;

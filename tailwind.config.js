@@ -17,12 +17,16 @@ export default {
       },
       margin: {
         m_primary: '6px',
+        m_4px: '4px',
         m_8px: '8px',
         m_medium: '12px',
+        m_16px: '16px',
         m_large: '20px',
         m_secondary: '40px',
         m_24px: '24px',
         m_40px: '40px',
+        m_80px:'80px',
+        m_100px: '100px',
 
       },
       gap: {

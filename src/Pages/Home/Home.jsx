@@ -25,7 +25,7 @@ const Home = () => {
                 <LoginCard />
             </div>
             <hr className="" />
-            <div className="flex items-center py-[35px] justify-between pr-[28px]">
+            <div className="flex bg-white items-center py-[35px] justify-between pr-[28px]">
                 <h1 className="text-[#909090] text-[13.6px]">ColoredStrategies 2020</h1>
                 <p className="text-[#145388] text-[12.8px]">Review | Purchase | Docs</p>
             </div>

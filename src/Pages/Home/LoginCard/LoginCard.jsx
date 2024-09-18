@@ -1,7 +1,7 @@
 import img1 from '../../../assets/foodImg/pinterest (25).jpg'
 const LoginCard = () => {
     return (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pr-[40px]">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pr-[40px] bg-white">
             <div className='shadow  h-[650px] relative'>
                 <div className='h-[650px]'>
                     <div className="h-[30%]">

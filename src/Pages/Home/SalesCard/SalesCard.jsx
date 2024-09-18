@@ -8,33 +8,33 @@ import SimpleLineChart from '../SimpleLineChart/SimpleLineChart';
 
 const SalesCard = () => {
     return (
-        <div className='pt-[24px] pr-[40px]'>
+        <div className='pt-[24px] pr-[40px] '>
 
-            <div className='flex flex-row gap-6'>
+            <div className='flex flex-col lg:flex-row gap-6'>
                 <div className='flex flex-col flex-1'>
-                    <div className='grid grid-cols-3 gap-6'>
-                        <div className='shadow py-[32px] px-[8px] h-[191px]'>
+                    <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 overflow-x-auto'>
+                        <div className='shadow py-[32px] px-[8px] h-[191px] bg-white rounded-md'>
                             <GoStopwatch className='h-[32px] w-[32px] text-center mx-auto' />
                             <p className='text-center font-semibold mb-0 text-[#8f8f8f] lineHeight text-[13px] py-[10px]'>Pending Orders</p>
                             <p className='lead text-center'>14</p>
                         </div>
 
-                        <div className='shadow  py-[32px] px-[8px] h-[191px]'>
+                        <div className='shadow  py-[32px] px-[8px] h-[191px] bg-white rounded-md'>
                             <GoStopwatch className='h-[32px] w-[32px] text-center  mx-auto' />
                             <p className='text-center font-semibold mb-0 text-[#8f8f8f] lineHeight  text-[13px] py-[10px]'>Complete Orders</p>
                             <p className='lead text-center'>14</p>
                         </div>
-                        <div className='shadow  py-[32px] px-[8px] h-[191px]'>
+                        <div className='shadow  py-[32px] px-[8px] h-[191px] bg-white rounded-md'>
                             <GoStopwatch className='h-[32px] w-[32px] text-center  mx-auto' />
                             <p className='text-center font-semibold mb-0 text-[#8f8f8f] lineHeight  text-[13px] py-[10px]'>Pending Orders</p>
                             <p className='lead text-center'>14</p>
                         </div>
                     </div>
-                    <div className='shadow  mt-[24px] h-[500px]'>
+                    <div className='shadow bg-white rounded-md  mt-[24px] h-[500px]'>
                         <SimpleLineChart />
                     </div>
                 </div>
-                <div className='shadow flex-1 p-7 pr-[28px]'>
+                <div className='shadow flex-1 p-7 pr-[28px] bg-white rounded-md'>
                     <h1 className='mb-8 text-[17px] border'>
                         Recent Orders
                     </h1>

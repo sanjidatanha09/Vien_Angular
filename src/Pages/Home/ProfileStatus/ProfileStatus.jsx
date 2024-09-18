@@ -4,7 +4,7 @@ const ProfileStatus = () => {
     return (
         <div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pr-[40px] pt-6">
-                <div className='shadow p-7 pr-[28px] h-[380px] flex flex-col backgroundBannerImage'>
+                <div className='shadow p-7 pr-[28px] h-[380px] flex flex-col backgroundBannerImage bg-white'>
                     <div className="flex-1">
                     </div>
                     <div className="flex-1 ">
@@ -15,7 +15,7 @@ const ProfileStatus = () => {
                         </div>
                     </div>
                 </div>
-                <div className='shadow p-7 pr-[28px] h-[380px]'>
+                <div className='shadow p-7 pr-[28px] h-[380px] bg-white'>
                     <h1 className='mb-8 text-[17px]'>
                         Cakes
                     </h1>
