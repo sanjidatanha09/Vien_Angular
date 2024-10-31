@@ -126,33 +126,24 @@ const Layout = () => {
         }
     };
 
-    const handleClickOutside = (event) => {
-        console.log()
-        if (window.matchMedia('(min-width: 1024px)').matches) {
-            // For large screens, we don't want to close the sidebar on outside clicks
-            return;
-        }
+   const handleClickOutside = (event) => {
+     if (window.matchMedia("(min-width: 1024px)").matches) return;
 
-        // For small screens, check if the click is outside both sidebars
-        if (
-            sidebar1Ref.current &&
-            !sidebar1Ref.current.contains(event.target) &&
-            sidebar2Ref.current &&
-            !sidebar2Ref.current.contains(event.target) &&
-            containerRef.current &&
-            !containerRef.current.contains(event.target)
-        ) {
-            // Close both sidebars if the click is outside
-            setSidebar1Visible(false);
-            setSidebar2Visible(false);
-        }
-    };
-    useEffect(() => {
-        document.addEventListener('mousedown', handleClickOutside);
-        return () => {
-            document.removeEventListener('mousedown', handleClickOutside);
-        };
-    }, []);
+     if (
+       sidebar1Ref.current &&
+       !sidebar1Ref.current.contains(event.target) &&
+       sidebar2Ref.current &&
+       !sidebar2Ref.current.contains(event.target)
+     ) {
+       setSidebar1Visible(false);
+       setSidebar2Visible(false);
+     }
+   };
+
+   useEffect(() => {
+     document.addEventListener("mousedown", handleClickOutside);
+     return () => document.removeEventListener("mousedown", handleClickOutside);
+   }, []);
 
     // Handle first sidebar content click
     const handleFirstSidebarClick = (content, item) => {
