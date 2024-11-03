@@ -217,7 +217,8 @@ const Layout = () => {
                                 <HiUserGroup className="w-[32px] font-thin h-[32px] mx-auto" />
                                 <p className="font-normal text-text_standard">Applications</p>
                             </li>
-                            <hr />
+                            <hr />-+
+                            
                         </ul>
                     </div>
 
